@@ -6,19 +6,21 @@ public class HeapSort {
     public void heapSort(int arr[]) {
         int n = arr.length;
 
-        // Construir un heap (montículo) máximo (comenzamos con el último nodo que no es una hoja, es decir el índice n / 2 - 1)
+        // Construir un heap máximo. comenzamos con el último nodo que no es una hoja, es decir el índice n / 2 - 1)
+        // y vamos hacia atrás
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
         }
 
         // Extraer elementos del heap uno por uno y se colocan en la posición correcta en el array ordenado
         for (int i = n - 1; i > 0; i--) {
-            // Mover el elemento actual al final del array
+            // Mover el elemento actual al final del array, ya que ahora es elemento máximo.
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
 
             // Llamar a heapify en el subárbol reducido (comenzamos en la raíz del heap)
+            // Convertimos 
             heapify(arr, i, 0);
         }
     }
@@ -27,14 +29,14 @@ public class HeapSort {
     /**
      * Heapify.
      *
-     * @param arr the arr La primera variable es al array a ordenar.  El método heapify trabaja en este array para reorganizarlo y mantener la propiedad del montículo.
-     * @param n the n Es el tamaño actual del montículo o subárbol que se está procesando en la llamada actual a heapify. Esta variable es importante porque le indica a la función cuántos elementos del array deben ser considerados en el montículo. En cada llamada recursiva o iteración de heapify, el tamaño del montículo se reduce, generalmente disminuyendo en 1. 
+     * @param arr La primera variable es al array a ordenar.  El método heapify trabaja en este array para reorganizarlo y mantener la propiedad del montículo.
+     * @param n Es el tamaño actual del montículo o subárbol que se está procesando en la llamada actual a heapify. Esta variable es importante porque le indica a la función cuántos elementos del array deben ser considerados en el montículo. En cada llamada recursiva o iteración de heapify, el tamaño del montículo se reduce, generalmente disminuyendo en 1. 
      * 			La variable n asegura que solo se procesen los elementos válidos del array.
-     * @param i the i Este parámetro representa la posición del nodo actual en el montículo o subárbol que se está procesando en la llamada actual a heapify. En otras palabras, i es el índice del nodo que se está considerando en ese momento. La función heapify comienza su trabajo desde un nodo en particular y se asegura de que ese nodo y 
+     * @param i Este parámetro representa la posición del nodo actual en el montículo o subárbol que se está procesando en la llamada actual a heapify. En otras palabras, i es el índice del nodo que se está considerando en ese momento. La función heapify comienza su trabajo desde un nodo en particular y se asegura de que ese nodo y 
      * 					sus descendientes cumplan con la propiedad del montículo máximo.
      */
     void heapify(int arr[], int n, int i) {
-        int elMasGrande = i; // inicializar la variable largest con el valor de i, que representa la posición de un nodo en el montículo (heap).
+        int elMasGrande = i; // inicializar la variable elMasGrande con el valor de i, que representa la posición de un nodo en el montículo (heap).
         int hijoIzquierdo = 2 * i + 1; // Índice del hijo izquierdo
         int hijoDerecho = 2 * i + 2; // Índice del hijo derecho
 
